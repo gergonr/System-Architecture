@@ -70,10 +70,11 @@
         .diagram-container {
             position: relative;
             width: 100%;
-            min-height: 900px;
+            min-height: 950px;
             background: #fff;
             overflow: auto;
             padding: 20px;
+            padding-bottom: 40px;
         }
         
         .system-group {
@@ -84,18 +85,76 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        .mas-bg { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-color: #64b5f6; }
-        .success-bg { background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border-color: #ba68c8; }
-        .manual-bg { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-color: #ffb74d; }
-        .clm-bg { background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-color: #66bb6a; }
-        .crm-bg { background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%); border-color: #4db6ac; }
-        .erp-bg { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-color: #f06292; }
-        .support-bg { background: linear-gradient(135deg, #f3e5f5 0%, #ce93d8 100%); border-color: #ab47bc; }
-        .psa-bg { background: linear-gradient(135deg, #ede7f6 0%, #d1c4e9 100%); border-color: #9575cd; }
-        .cxt-bg { background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-color: #7986cb; }
-        .accounting-bg { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); border-color: #ffa726; }
-        .hcm-bg { background: linear-gradient(135deg, #efebe9 0%, #d7ccc8 100%); border-color: #a1887f; }
-        .analytics-bg { background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); border-color: #4dd0e1; }
+        .mas-bg { background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%); border-color: #b3d4fc; }
+        .success-bg { background: linear-gradient(135deg, #faf8fb 0%, #f3eef5 100%); border-color: #d4b5d6; }
+        .manual-bg { background: linear-gradient(135deg, #fffbf7 0%, #fff5eb 100%); border-color: #ffd4a3; }
+        .clm-bg { background: linear-gradient(135deg, #f6faf6 0%, #eef7ef 100%); border-color: #b8d4b9; }
+        .crm-bg { background: linear-gradient(135deg, #f5fafa 0%, #e8f4f3 100%); border-color: #a3d5d3; }
+        .erp-bg { background: linear-gradient(135deg, #fef8fa 0%, #fceef3 100%); border-color: #f5b5c8; }
+        .support-bg { background: linear-gradient(135deg, #faf8fb 0%, #f3edf7 100%); border-color: #c9b3d4; }
+        .psa-bg { background: linear-gradient(135deg, #f8f7fb 0%, #f0ecf7 100%); border-color: #beb3d4; }
+        .cxt-bg { background: linear-gradient(135deg, #f6f7fb 0%, #eff0f7 100%); border-color: #b3b9d4; }
+        .accounting-bg { background: linear-gradient(135deg, #fffdf8 0%, #fff8ee 100%); border-color: #ffc866; }
+        .hcm-bg { background: linear-gradient(135deg, #fbfaf9 0%, #f5f2f0 100%); border-color: #c5b8b1; }
+        .analytics-bg { background: linear-gradient(135deg, #f4fbfc 0%, #e6f5f7 100%); border-color: #9dd8e0; }
+        
+        .system-group {
+            position: absolute;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            padding-bottom: 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .system-group:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+            border-color: #999;
+        }
+        
+        .system-group::before {
+            content: "🏢 Click for relationships";
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 10px;
+            color: #999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .system-group:hover::before {
+            opacity: 1;
+        }
+        
+        .system-group h3, .system-group h4 {
+            user-select: none;
+        }
+        
+        .component-box {
+            position: absolute;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            text-align: center;
+            min-width: 90px;
+            z-index: 10;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .component-box:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background: #f0f8ff;
+            border-color: #2196F3;
+        }
         
         .system-label {
             position: absolute;
@@ -106,8 +165,10 @@
             text-align: center;
             color: white;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 11px;
             border-radius: 0 0 6px 6px;
+            pointer-events: none;
+            z-index: 5;
         }
         
         .orange-label {
@@ -125,26 +186,6 @@
         .yellow-label {
             background: #FFC107;
             color: #333;
-        }
-        
-        .component-box {
-            position: absolute;
-            background: white;
-            border: 2px solid #333;
-            border-radius: 6px;
-            padding: 8px 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 13px;
-            text-align: center;
-            min-width: 90px;
-            z-index: 10;
-        }
-        
-        .component-box:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            background: #f8f8f8;
         }
         
         .manual-box {
@@ -298,7 +339,45 @@
 </head>
 <body>
     <div class="container">
-        <h1 style="text-align: center; color: #333; margin-bottom: 30px;">System Architecture & Integration Framework</h1>
+        <h1 style="text-align: center; color: #333; margin-bottom: 20px;">System Architecture & Integration Framework</h1>
+        
+        <!-- User Instructions -->
+        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #f5f5f5 100%); padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #b3d4fc;">
+            <h3 style="margin-top: 0; color: #1565C0; font-size: 16px;">📌 How to Use This Interactive Diagram:</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 3px solid #4CAF50;">
+                    <strong style="color: #2E7D32; display: flex; align-items: center;">
+                        <span style="font-size: 20px; margin-right: 8px;">🏢</span> 
+                        Container/System Level (Colored Areas)
+                    </strong>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; color: #555;">
+                        Click anywhere on the <strong>colored background areas</strong> to view:
+                    </p>
+                    <ul style="margin: 5px 0; font-size: 13px; color: #666;">
+                        <li>System-to-system relationships</li>
+                        <li>Data flow directions</li>
+                        <li>Integration points</li>
+                    </ul>
+                </div>
+                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 3px solid #2196F3;">
+                    <strong style="color: #1565C0; display: flex; align-items: center;">
+                        <span style="font-size: 20px; margin-right: 8px;">📦</span> 
+                        Component Level (White Boxes)
+                    </strong>
+                    <p style="margin: 8px 0 0 0; font-size: 14px; color: #555;">
+                        Click on individual <strong>white boxes with borders</strong> to view:
+                    </p>
+                    <ul style="margin: 5px 0; font-size: 13px; color: #666;">
+                        <li>Detailed capabilities</li>
+                        <li>Process flows</li>
+                        <li>Specific features</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin: 10px 0 0 0; font-size: 12px; color: #777; text-align: center; font-style: italic;">
+                💡 Tip: Hover over elements to see visual hints. Press ESC to close any popup.
+            </p>
+        </div>
         
         <div class="tabs">
             <button class="tab active" onclick="switchTab('diagram')">Architecture Diagram</button>
@@ -308,107 +387,111 @@
         <div id="diagram-tab" class="tab-content active">
             <div class="diagram-container">
                 <!-- MAS Group -->
-                <div class="system-group mas-bg" style="left: 20px; top: 20px; width: 520px; height: 180px;">
+                <div class="system-group mas-bg" style="left: 20px; top: 20px; width: 520px; height: 190px;" onclick="showContainerRelations('mas')">
                     <h3 style="margin-bottom: 10px; color: #1565C0;">MAS</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 100px;" onclick="showModal('digital-content')">
+                    <div class="component-box" style="left: 20px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('digital-content')">
                         Digital<br>Content<br>(Website)
                     </div>
-                    <div class="component-box" style="left: 140px; top: 50px; width: 100px;" onclick="showModal('campaigns')">
+                    <div class="component-box" style="left: 140px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('campaigns')">
                         Campaigns<br>management
                     </div>
-                    <div class="component-box" style="left: 260px; top: 50px; width: 100px;" onclick="showModal('lead-scoring')">
+                    <div class="component-box" style="left: 260px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('lead-scoring')">
                         Lead<br>Scoring
                     </div>
-                    <div class="component-box" style="left: 380px; top: 50px; width: 110px;" onclick="showModal('nurture')">
+                    <div class="component-box" style="left: 380px; top: 50px; width: 110px;" onclick="event.stopPropagation(); showModal('nurture')">
                         Nurture<br>Communications
                     </div>
-                    <div class="system-label orange-label">HS: Content Hub &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HS: Marketing Hub</div>
+                    <div class="system-label orange-label">
+                        <span style="margin-right: 40px;">HS: Content Hub</span>
+                        <span>HS: Marketing Hub</span>
+                    </div>
                 </div>
                 
                 <!-- Success/AM Group -->
-                <div class="system-group success-bg" style="left: 560px; top: 20px; width: 500px; height: 180px;">
+                <div class="system-group success-bg" style="left: 560px; top: 20px; width: 500px; height: 190px;" onclick="showContainerRelations('success')">
                     <h3 style="margin-bottom: 10px; color: #7B1FA2;">Success / AM</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="showModal('nps')">
+                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('nps')">
                         NPS
                     </div>
-                    <div class="component-box" style="left: 130px; top: 50px; width: 100px;" onclick="showModal('customer-health')">
+                    <div class="component-box" style="left: 130px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('customer-health')">
                         Customer<br>Health
                     </div>
-                    <div class="component-box" style="left: 250px; top: 50px; width: 100px;" onclick="showModal('risk-plans')">
+                    <div class="component-box" style="left: 250px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('risk-plans')">
                         At-Risk Plans
                     </div>
-                    <div class="component-box" style="left: 370px; top: 50px; width: 100px;" onclick="showModal('tasks-interactions')">
+                    <div class="component-box" style="left: 370px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('tasks-interactions')">
                         Tasks and<br>interactions
                     </div>
                     <div class="system-label orange-label">Hubspot</div>
                 </div>
                 
                 <!-- Manual Box -->
-                <div class="system-group manual-bg" style="left: 20px; top: 230px; width: 140px; height: 100px;">
+                <div class="system-group manual-bg" style="left: 20px; top: 230px; width: 140px; height: 120px;" onclick="showContainerRelations('manual')">
                     <h4 style="text-align: center; color: #E65100;">Manual</h4>
-                    <div class="component-box" style="left: 25px; top: 40px; width: 90px;" onclick="showModal('red-lining')">
+                    <div class="component-box" style="left: 25px; top: 40px; width: 90px;" onclick="event.stopPropagation(); showModal('red-lining')">
                         Red lining
                     </div>
+                    <div class="system-label" style="background: #FF9800; color: white; font-size: 10px;">Manual Process</div>
                 </div>
                 
                 <!-- CLM Group -->
-                <div class="system-group clm-bg" style="left: 180px; top: 230px; width: 250px; height: 240px;">
+                <div class="system-group clm-bg" style="left: 180px; top: 230px; width: 250px; height: 250px;" onclick="showContainerRelations('clm')">
                     <h3 style="margin-bottom: 10px; color: #2E7D32;">CLM</h3>
-                    <div class="component-box" style="left: 75px; top: 50px; width: 100px;" onclick="showModal('quote-document')">
+                    <div class="component-box" style="left: 75px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('quote-document')">
                         Quote<br>Document
                     </div>
-                    <div class="component-box" style="left: 75px; top: 130px; width: 100px;" onclick="showModal('executed-contracts')">
+                    <div class="component-box" style="left: 75px; top: 130px; width: 100px;" onclick="event.stopPropagation(); showModal('executed-contracts')">
                         Executed<br>Contracts
                     </div>
                     <div class="system-label orange-label">HS: Sales Hub</div>
                 </div>
                 
                 <!-- CRM Group -->
-                <div class="system-group crm-bg" style="left: 450px; top: 230px; width: 470px; height: 240px;">
+                <div class="system-group crm-bg" style="left: 450px; top: 230px; width: 470px; height: 250px;" onclick="showContainerRelations('crm')">
                     <h3 style="margin-bottom: 10px; color: #00695C;">CRM</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="showModal('contacts')">
+                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('contacts')">
                         Contacts
                     </div>
-                    <div class="component-box" style="left: 130px; top: 50px; width: 100px;" onclick="showModal('accounts-companies')">
+                    <div class="component-box" style="left: 130px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('accounts-companies')">
                         Accounts /<br>Companies
                     </div>
-                    <div class="component-box" style="left: 250px; top: 50px; width: 90px;" onclick="showModal('phone-system')">
+                    <div class="component-box" style="left: 250px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('phone-system')">
                         Phone<br>System
                     </div>
-                    <div class="component-box" style="left: 360px; top: 50px; width: 90px;" onclick="showModal('new-logo')">
+                    <div class="component-box" style="left: 360px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('new-logo')">
                         New Logo<br>Opportunities
                     </div>
-                    <div class="component-box" style="left: 20px; top: 130px; width: 100px;" onclick="showModal('opportunity-products')">
+                    <div class="component-box" style="left: 20px; top: 130px; width: 100px;" onclick="event.stopPropagation(); showModal('opportunity-products')">
                         Opportunity<br>Products
                     </div>
-                    <div class="component-box" style="left: 140px; top: 130px; width: 90px;" onclick="showModal('products-pricebook')">
+                    <div class="component-box" style="left: 140px; top: 130px; width: 90px;" onclick="event.stopPropagation(); showModal('products-pricebook')">
                         Products<br>Price-book
                     </div>
-                    <div class="component-box" style="left: 250px; top: 130px; width: 90px;" onclick="showModal('renewal')">
+                    <div class="component-box" style="left: 250px; top: 130px; width: 90px;" onclick="event.stopPropagation(); showModal('renewal')">
                         Renewal<br>Opportunities
                     </div>
-                    <div class="component-box" style="left: 360px; top: 130px; width: 90px;" onclick="showModal('upsell')">
+                    <div class="component-box" style="left: 360px; top: 130px; width: 90px;" onclick="event.stopPropagation(); showModal('upsell')">
                         Up-sell<br>Opportunities
                     </div>
                     <div class="system-label orange-label">HS: Sales Hub</div>
                 </div>
                 
                 <!-- ERP Group -->
-                <div class="system-group erp-bg" style="left: 940px; top: 230px; width: 280px; height: 240px;">
+                <div class="system-group erp-bg" style="left: 940px; top: 230px; width: 280px; height: 250px;" onclick="showContainerRelations('erp')">
                     <h3 style="margin-bottom: 10px; color: #C2185B;">ERP</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="showModal('customer-erp')">
+                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('customer-erp')">
                         Customer
                     </div>
-                    <div class="component-box" style="left: 130px; top: 50px; width: 90px;" onclick="showModal('invoices')">
+                    <div class="component-box" style="left: 130px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('invoices')">
                         Invoices
                     </div>
-                    <div class="component-box" style="left: 20px; top: 130px; width: 90px;" onclick="showModal('items')">
+                    <div class="component-box" style="left: 20px; top: 130px; width: 90px;" onclick="event.stopPropagation(); showModal('items')">
                         Items<br>(SKUs)
                     </div>
-                    <div class="component-box" style="left: 130px; top: 130px; width: 100px;" onclick="showModal('customer-payments')">
+                    <div class="component-box" style="left: 130px; top: 130px; width: 100px;" onclick="event.stopPropagation(); showModal('customer-payments')">
                         Customer<br>Payments
                     </div>
-                    <div class="component-box" style="left: 75px; top: 180px; width: 100px;" onclick="showModal('credit-memos')">
+                    <div class="component-box" style="left: 75px; top: 180px; width: 100px;" onclick="event.stopPropagation(); showModal('credit-memos')">
                         Credit Memos
                     </div>
                     <div class="system-label blue-label" style="display: flex; justify-content: space-around;">
@@ -419,15 +502,15 @@
                 </div>
                 
                 <!-- Support Group -->
-                <div class="system-group support-bg" style="left: 20px; top: 500px; width: 260px; height: 200px;">
+                <div class="system-group support-bg" style="left: 20px; top: 500px; width: 260px; height: 210px;" onclick="showContainerRelations('support')">
                     <h3 style="margin-bottom: 10px; color: #6A1B9A;">Support</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="showModal('knowledge')">
+                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('knowledge')">
                         Knowledge
                     </div>
-                    <div class="component-box" style="left: 130px; top: 50px; width: 110px;" onclick="showModal('communication')">
+                    <div class="component-box" style="left: 130px; top: 50px; width: 110px;" onclick="event.stopPropagation(); showModal('communication')">
                         Communication
                     </div>
-                    <div class="component-box" style="left: 75px; top: 120px; width: 90px;" onclick="showModal('cases')">
+                    <div class="component-box" style="left: 75px; top: 120px; width: 90px;" onclick="event.stopPropagation(); showModal('cases')">
                         Cases
                     </div>
                     <div class="system-label blue-label" style="display: flex; justify-content: space-around;">
@@ -438,18 +521,18 @@
                 </div>
                 
                 <!-- PSA Group -->
-                <div class="system-group psa-bg" style="left: 300px; top: 500px; width: 260px; height: 200px;">
+                <div class="system-group psa-bg" style="left: 300px; top: 500px; width: 260px; height: 210px;" onclick="showContainerRelations('psa')">
                     <h3 style="margin-bottom: 10px; color: #512DA8;">PSA</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="showModal('projects')">
+                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('projects')">
                         Projects
                     </div>
-                    <div class="component-box" style="left: 130px; top: 50px; width: 100px;" onclick="showModal('billing-output')">
+                    <div class="component-box" style="left: 130px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('billing-output')">
                         Billing<br>Output
                     </div>
-                    <div class="component-box" style="left: 20px; top: 120px; width: 100px;" onclick="showModal('tasks-milestones')">
+                    <div class="component-box" style="left: 20px; top: 120px; width: 100px;" onclick="event.stopPropagation(); showModal('tasks-milestones')">
                         Tasks and<br>Milestones
                     </div>
-                    <div class="component-box" style="left: 140px; top: 120px; width: 90px;" onclick="showModal('timesheets')">
+                    <div class="component-box" style="left: 140px; top: 120px; width: 90px;" onclick="event.stopPropagation(); showModal('timesheets')">
                         Time-sheets
                     </div>
                     <div class="system-label blue-label" style="display: flex; justify-content: space-around;">
@@ -460,27 +543,27 @@
                 </div>
                 
                 <!-- CXT Billing Server -->
-                <div class="system-group cxt-bg" style="left: 580px; top: 500px; width: 200px; height: 180px;">
+                <div class="system-group cxt-bg" style="left: 580px; top: 500px; width: 200px; height: 190px;" onclick="showContainerRelations('cxt')">
                     <h3 style="margin-bottom: 10px; color: #303F9F;">CXT Billing Server</h3>
-                    <div class="component-box" style="left: 50px; top: 50px; width: 100px;" onclick="showModal('consumption-data')">
+                    <div class="component-box" style="left: 50px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('consumption-data')">
                         Consumption<br>data
                     </div>
-                    <div class="component-box" style="left: 50px; top: 110px; width: 100px;" onclick="showModal('billing-logic')">
+                    <div class="component-box" style="left: 50px; top: 110px; width: 100px;" onclick="event.stopPropagation(); showModal('billing-logic')">
                         Billing logic
                     </div>
                     <div class="system-label green-label">CXT</div>
                 </div>
                 
                 <!-- Accounting Group -->
-                <div class="system-group accounting-bg" style="left: 800px; top: 500px; width: 220px; height: 200px;">
+                <div class="system-group accounting-bg" style="left: 800px; top: 500px; width: 220px; height: 210px;" onclick="showContainerRelations('accounting')">
                     <h3 style="margin-bottom: 10px; color: #E65100;">Accounting</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="showModal('revenue-recognition')">
+                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('revenue-recognition')">
                         Revenue<br>Recognition
                     </div>
-                    <div class="component-box" style="left: 20px; top: 120px; width: 90px;" onclick="showModal('accounts-payable')">
+                    <div class="component-box" style="left: 20px; top: 120px; width: 90px;" onclick="event.stopPropagation(); showModal('accounts-payable')">
                         Accounts<br>Payable
                     </div>
-                    <div class="component-box" style="left: 130px; top: 85px; width: 70px;" onclick="showModal('general-ledger')">
+                    <div class="component-box" style="left: 130px; top: 85px; width: 70px;" onclick="event.stopPropagation(); showModal('general-ledger')">
                         General<br>Ledger
                     </div>
                     <div class="system-label blue-label" style="display: flex; justify-content: space-around;">
@@ -491,35 +574,39 @@
                 </div>
                 
                 <!-- HCM Group -->
-                <div class="system-group hcm-bg" style="left: 1040px; top: 500px; width: 240px; height: 200px;">
+                <div class="system-group hcm-bg" style="left: 1040px; top: 500px; width: 240px; height: 210px;" onclick="showContainerRelations('hcm')">
                     <h3 style="margin-bottom: 10px; color: #5D4037;">HCM</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="showModal('payroll')">
+                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('payroll')">
                         Payroll<br>(US / Intl)
                     </div>
-                    <div class="component-box" style="left: 130px; top: 50px; width: 90px;" onclick="showModal('recruiting')">
+                    <div class="component-box" style="left: 130px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('recruiting')">
                         Recruiting
                     </div>
-                    <div class="component-box" style="left: 20px; top: 120px; width: 90px;" onclick="showModal('3x3')">
+                    <div class="component-box" style="left: 20px; top: 120px; width: 90px;" onclick="event.stopPropagation(); showModal('3x3')">
                         3x3
                     </div>
-                    <div class="component-box" style="left: 130px; top: 120px; width: 90px;" onclick="showModal('lms')">
+                    <div class="component-box" style="left: 130px; top: 120px; width: 90px;" onclick="event.stopPropagation(); showModal('lms')">
                         LMS
                     </div>
+                    <div class="system-label" style="background: #8D6E63; color: white;">Various HR Systems</div>
                 </div>
                 
                 <!-- Analytics Group -->
-                <div class="system-group analytics-bg" style="left: 450px; top: 720px; width: 420px; height: 150px;">
+                <div class="system-group analytics-bg" style="left: 450px; top: 730px; width: 420px; height: 170px;" onclick="showContainerRelations('analytics')">
                     <h3 style="margin-bottom: 10px; color: #00838F;">Analytics</h3>
-                    <div class="component-box" style="left: 30px; top: 50px; width: 100px;" onclick="showModal('4dx-dashboard')">
+                    <div class="component-box" style="left: 30px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('4dx-dashboard')">
                         4DX<br>Dashboard
                     </div>
-                    <div class="component-box" style="left: 160px; top: 50px; width: 90px;" onclick="showModal('obr-kpis')">
+                    <div class="component-box" style="left: 160px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('obr-kpis')">
                         OBR KPIs
                     </div>
-                    <div class="component-box" style="left: 280px; top: 50px; width: 100px;" onclick="showModal('monthly-reporting')">
+                    <div class="component-box" style="left: 280px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('monthly-reporting')">
                         Monthly<br>reporting pack
                     </div>
-                    <div class="system-label yellow-label">PowerBI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Considering future migration to MS 365</div>
+                    <div class="system-label yellow-label">
+                        <span>PowerBI</span>
+                        <span style="margin-left: 20px; font-size: 10px;">Considering future migration to MS 365</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -645,8 +732,980 @@
     </div>
     
     <script>
+        // Container relationships data
+        const containerRelationships = {
+            'mas': {
+                title: 'MAS (Marketing Automation System)',
+                description: 'HubSpot Marketing Hub for lead generation and nurturing',
+                relationships: [
+                    {
+                        target: 'CRM',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Leads', 'MQLs', 'Campaign data', 'Lead scores', 'Form submissions'],
+                        description: 'Marketing qualified leads flow into CRM for sales qualification'
+                    },
+                    {
+                        target: 'Analytics',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Campaign metrics', 'Conversion rates', 'Lead sources', 'ROI data'],
+                        description: 'Marketing performance data feeds into analytics dashboards'
+                    }
+                ]
+            },
+            'success': {
+                title: 'Success / AM (Account Management)',
+                description: 'Customer Success and Account Management in HubSpot',
+                relationships: [
+                    {
+                        target: 'CRM',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Customer health scores', 'NPS data', 'Account sentiment', 'Renewal dates'],
+                        description: 'Account health and success metrics sync with CRM'
+                    },
+                    {
+                        target: 'Analytics',
+                        dataFlow: 'Unidirectional',
+                        elements: ['NPS trends', 'Health metrics', 'Churn risk indicators'],
+                        description: 'Customer success metrics feed analytics'
+                    },
+                    {
+                        target: 'Support',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Escalations', 'Support tickets', 'Customer issues'],
+                        description: 'Coordination on customer issues and escalations'
+                    }
+                ]
+            },
+            'manual': {
+                title: 'Manual Processes',
+                description: 'Manual contract review and red-lining processes',
+                relationships: [
+                    {
+                        target: 'CLM',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Reviewed contracts', 'Legal approvals', 'Redlined documents'],
+                        description: 'Manual review feeds into contract lifecycle management'
+                    }
+                ]
+            },
+            'clm': {
+                title: 'CLM (Contract Lifecycle Management)',
+                description: 'Quote and contract management in HubSpot Sales Hub',
+                relationships: [
+                    {
+                        target: 'CRM',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Quotes', 'Contracts', 'Terms', 'Pricing'],
+                        description: 'Quotes and contracts linked to deals and accounts'
+                    },
+                    {
+                        target: 'ERP',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Executed contracts', 'Contract values', 'Payment terms'],
+                        description: 'Contract details flow to ERP for invoicing'
+                    }
+                ]
+            },
+            'crm': {
+                title: 'CRM (Customer Relationship Management)',
+                description: 'HubSpot Sales Hub - Core system for contacts, companies, and deals',
+                relationships: [
+                    {
+                        target: 'ERP',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Contacts', 'Companies', 'Closed-Won Deals', 'Products'],
+                        description: 'Two-way sync via HubSpot Data Sync for customer and deal data'
+                    },
+                    {
+                        target: 'MAS',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Contact updates', 'Lifecycle stages', 'Lead status'],
+                        description: 'Lead and contact information flows between marketing and sales'
+                    },
+                    {
+                        target: 'Success/AM',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Account data', 'Renewal deals', 'Customer info'],
+                        description: 'Customer data shared for account management'
+                    },
+                    {
+                        target: 'Analytics',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Pipeline data', 'Sales metrics', 'Deal velocity', 'Win rates'],
+                        description: 'Sales performance data feeds analytics'
+                    }
+                ]
+            },
+            'erp': {
+                title: 'ERP (Enterprise Resource Planning)',
+                description: 'Zoho Books/CRM for invoicing and financial operations',
+                relationships: [
+                    {
+                        target: 'CRM',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Invoices', 'Payment status', 'Customer billing info'],
+                        description: 'Financial data syncs with HubSpot CRM'
+                    },
+                    {
+                        target: 'Accounting',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Invoice data', 'Payment records', 'AR information'],
+                        description: 'Financial transactions flow to accounting'
+                    },
+                    {
+                        target: 'CXT Billing',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Usage data for billing', 'Consumption metrics'],
+                        description: 'Receives consumption data for usage-based billing'
+                    }
+                ]
+            },
+            'support': {
+                title: 'Support System',
+                description: 'Customer support ticketing and knowledge base',
+                relationships: [
+                    {
+                        target: 'CRM',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Support tickets', 'Case history', 'Customer issues'],
+                        description: 'Support cases linked to customer records'
+                    },
+                    {
+                        target: 'Success/AM',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Escalations', 'Critical issues', 'Resolution status'],
+                        description: 'Coordination on customer issues'
+                    }
+                ]
+            },
+            'psa': {
+                title: 'PSA (Professional Services Automation)',
+                description: 'Project management and time tracking',
+                relationships: [
+                    {
+                        target: 'CRM',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Project status', 'Deliverables', 'Milestones'],
+                        description: 'Project information linked to customer accounts'
+                    },
+                    {
+                        target: 'ERP',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Billable hours', 'Project costs', 'Time entries'],
+                        description: 'Billing data flows to ERP for invoicing'
+                    }
+                ]
+            },
+            'cxt': {
+                title: 'CXT Billing Server',
+                description: 'Usage-based billing and consumption tracking',
+                relationships: [
+                    {
+                        target: 'ERP',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Consumption data', 'Usage metrics', 'Billing calculations'],
+                        description: 'Processed billing data sent to ERP for invoicing'
+                    },
+                    {
+                        target: 'CRM',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Usage trends', 'Consumption alerts'],
+                        description: 'Usage data for upsell opportunities'
+                    }
+                ]
+            },
+            'accounting': {
+                title: 'Accounting System',
+                description: 'QuickBooks for financial management',
+                relationships: [
+                    {
+                        target: 'ERP',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Journal entries', 'GL postings', 'Financial records'],
+                        description: 'Financial data sync with ERP'
+                    },
+                    {
+                        target: 'Analytics',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Revenue data', 'Financial metrics', 'P&L data'],
+                        description: 'Financial reporting to analytics'
+                    }
+                ]
+            },
+            'hcm': {
+                title: 'HCM (Human Capital Management)',
+                description: 'HR, payroll, and talent management systems',
+                relationships: [
+                    {
+                        target: 'Accounting',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Payroll data', 'Employee costs', 'Benefits expenses'],
+                        description: 'Payroll and HR costs flow to accounting'
+                    },
+                    {
+                        target: 'Analytics',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Headcount', 'Performance metrics', 'Training data'],
+                        description: 'HR metrics feed into analytics'
+                    }
+                ]
+            },
+            'analytics': {
+                title: 'Analytics Platform',
+                description: 'PowerBI for business intelligence and reporting',
+                relationships: [
+                    {
+                        target: 'All Systems',
+                        dataFlow: 'Unidirectional (Inbound)',
+                        elements: ['KPIs', 'Metrics', 'Performance data', 'Operational data'],
+                        description: 'Aggregates data from all systems for reporting and insights'
+                    }
+                ]
+            }
         // Component capabilities based on HubSpot Implementation document
         const componentData = {
+            'digital-content': {
+                title: 'Digital Content (Website)',
+                capabilities: [
+                    'HubSpot tracking code integration for visitor analytics',
+                    'Form capture and lead generation',
+                    'Landing page creation and management',
+                    'Content personalization based on visitor behavior',
+                    'SEO optimization tools'
+                ],
+                flows: [
+                    'Website forms → HubSpot Contacts',
+                    'Visitor tracking → Lead scoring',
+                    'Content engagement → Marketing automation triggers'
+                ]
+            },
+            'campaigns': {
+                title: 'Campaign Management',
+                capabilities: [
+                    'Multi-channel campaign tracking',
+                    'Email marketing automation',
+                    'Campaign attribution and ROI analysis',
+                    'A/B testing for campaigns',
+                    'Marketing asset grouping and performance tracking'
+                ],
+                flows: [
+                    'Campaign responses → Lead qualification',
+                    'Campaign metrics → Analytics dashboard',
+                    'Email engagement → Lead scoring updates'
+                ]
+            },
+            'lead-scoring': {
+                title: 'Lead Scoring',
+                capabilities: [
+                    'Automated scoring based on engagement',
+                    'Demographic and firmographic scoring',
+                    'Behavioral scoring from website interactions',
+                    'MQL to SQL progression tracking',
+                    'Custom scoring rules and thresholds'
+                ],
+                flows: [
+                    'Lead score threshold → Sales notification',
+                    'High score leads → Auto-assignment to sales',
+                    'Score changes → Lifecycle stage updates'
+                ]
+            },
+            'nurture': {
+                title: 'Nurture Communications',
+                capabilities: [
+                    'Automated email nurture workflows',
+                    'Personalized content delivery',
+                    'Multi-stage nurture campaigns',
+                    'Lead re-engagement campaigns',
+                    'Progressive profiling'
+                ],
+                flows: [
+                    'Nurture engagement → Lead score updates',
+                    'Campaign completion → Sales handoff',
+                    'Non-responsive leads → Re-engagement workflow'
+                ]
+            },
+            'nps': {
+                title: 'NPS (Net Promoter Score)',
+                capabilities: [
+                    'NPS survey creation and distribution',
+                    'In-app survey embedding capability',
+                    'Automated survey scheduling',
+                    'Score tracking on contact records',
+                    'Detractor alert workflows'
+                ],
+                flows: [
+                    'Low NPS score → Account manager alert',
+                    'Survey responses → Contact property updates',
+                    'NPS trends → Customer health score'
+                ]
+            },
+            'customer-health': {
+                title: 'Customer Health Monitoring',
+                capabilities: [
+                    'Account sentiment tracking (Green/Yellow/Red)',
+                    'Health score calculation',
+                    'Usage data integration',
+                    'Engagement tracking',
+                    'Risk indicator monitoring'
+                ],
+                flows: [
+                    'Health score change → AM notification',
+                    'Red status → Escalation workflow',
+                    'Health metrics → Renewal probability'
+                ]
+            },
+            'risk-plans': {
+                title: 'At-Risk Plans',
+                capabilities: [
+                    'Risk identification workflows',
+                    'Intervention playbooks',
+                    'Escalation procedures',
+                    'Success plan creation',
+                    'Risk mitigation tracking'
+                ],
+                flows: [
+                    'Risk indicator → Task creation',
+                    'Risk plan → Timeline activities',
+                    'Mitigation success → Health score update'
+                ]
+            },
+            'tasks-interactions': {
+                title: 'Tasks and Interactions',
+                capabilities: [
+                    'Automated task creation',
+                    'Call logging and tracking',
+                    'Meeting scheduling',
+                    'Email tracking',
+                    'Activity timeline management'
+                ],
+                flows: [
+                    'Deal stage change → Task creation',
+                    'Call outcome → Contact property update',
+                    'Task completion → Next step automation'
+                ]
+            },
+            'contacts': {
+                title: 'Contacts Management',
+                capabilities: [
+                    'Unified contact database',
+                    'Lifecycle stage tracking',
+                    'Contact segmentation',
+                    'Activity history tracking',
+                    'Custom property management'
+                ],
+                flows: [
+                    'Form submission → Contact creation',
+                    'Contact updates → Zoho sync',
+                    'Lifecycle stage change → Workflow triggers'
+                ]
+            },
+            'accounts-companies': {
+                title: 'Accounts/Companies',
+                capabilities: [
+                    'Company record management',
+                    'Account hierarchy tracking',
+                    'Associated deals and contacts',
+                    'Account phase management (Onboarding/Adoption/Growth)',
+                    'Custom account properties'
+                ],
+                flows: [
+                    'Deal closed → Company properties update',
+                    'Company creation → Zoho sync',
+                    'Phase change → Stakeholder notification'
+                ]
+            },
+            'new-logo': {
+                title: 'New Logo Opportunities',
+                capabilities: [
+                    'New business pipeline management',
+                    'Deal stage automation',
+                    'Probability tracking',
+                    'Competition tracking',
+                    'Close date forecasting'
+                ],
+                flows: [
+                    'SQL → Deal creation',
+                    'Stage progression → Activity triggers',
+                    'Closed Won → Renewal deal creation'
+                ]
+            },
+            'renewal': {
+                title: 'Renewal Opportunities',
+                capabilities: [
+                    'Automated renewal deal creation',
+                    'Renewal pipeline management',
+                    '90/60/30 day reminders',
+                    'Annual increase calculation',
+                    'Churn risk assessment'
+                ],
+                flows: [
+                    'Deal closed → Next renewal created',
+                    'Renewal approaching → AM task',
+                    'Renewal won → Next cycle automation'
+                ]
+            },
+            'upsell': {
+                title: 'Upsell Opportunities',
+                capabilities: [
+                    'Expansion opportunity tracking',
+                    'Upsell pipeline management',
+                    'Product add-on tracking',
+                    'Usage-based upsell triggers',
+                    'Cross-sell identification'
+                ],
+                flows: [
+                    'Usage threshold → Upsell opportunity',
+                    'Upsell closed → Contract update',
+                    'Upsell → Renewal amount adjustment'
+                ]
+            },
+            'invoices': {
+                title: 'Invoice Management',
+                capabilities: [
+                    'Invoice data synchronization',
+                    'Payment status tracking',
+                    'Invoice history on timeline',
+                    'Outstanding balance visibility',
+                    'Payment reminder automation'
+                ],
+                flows: [
+                    'Deal closed → Invoice trigger in Zoho',
+                    'Invoice created → HubSpot timeline update',
+                    'Payment received → Status update'
+                ]
+            },
+            'quote-document': {
+                title: 'Quote Documents',
+                capabilities: [
+                    'Quote generation from deals',
+                    'Product line item management',
+                    'Quote template customization',
+                    'E-signature integration',
+                    'Quote versioning'
+                ],
+                flows: [
+                    'Deal → Quote creation',
+                    'Quote accepted → Deal stage update',
+                    'Quote items → Deal products'
+                ]
+            },
+            'products-pricebook': {
+                title: 'Products & Price Book',
+                capabilities: [
+                    'Centralized product catalog',
+                    'SKU management',
+                    'Pricing tier management',
+                    'Product-deal association',
+                    'Line item tracking'
+                ],
+                flows: [
+                    'Product selection → Deal line items',
+                    'Price book → Quote generation',
+                    'Product updates → Zoho sync'
+                ]
+            },
+            'red-lining': {
+                title: 'Contract Red-lining',
+                capabilities: [
+                    'Manual contract review process',
+                    'Legal approval workflows',
+                    'Version control',
+                    'Stakeholder collaboration',
+                    'Audit trail maintenance'
+                ],
+                flows: [
+                    'Quote → Legal review',
+                    'Approval → Contract execution',
+                    'Signed contract → Deal update'
+                ]
+            },
+            'executed-contracts': {
+                title: 'Executed Contracts',
+                capabilities: [
+                    'Contract repository',
+                    'Term tracking',
+                    'Renewal date management',
+                    'Contract value tracking',
+                    'Amendment history'
+                ],
+                flows: [
+                    'Signature → Contract activation',
+                    'Contract terms → Company properties',
+                    'Contract end → Renewal trigger'
+                ]
+            },
+            'opportunity-products': {
+                title: 'Opportunity Products',
+                capabilities: [
+                    'Product-to-deal association',
+                    'Quantity and discount tracking',
+                    'Revenue forecasting by product',
+                    'Product mix analysis',
+                    'Bundle management'
+                ],
+                flows: [
+                    'Product selection → Deal value calculation',
+                    'Product configuration → Quote generation',
+                    'Deal closure → Product fulfillment'
+                ]
+            },
+            'phone-system': {
+                title: 'Phone System Integration',
+                capabilities: [
+                    'Click-to-call functionality',
+                    'Call recording and logging',
+                    'Call outcome tracking',
+                    'Duration monitoring',
+                    'Voicemail drop'
+                ],
+                flows: [
+                    'Call completion → Activity log',
+                    'Call duration → Last contacted update',
+                    'Call outcome → Follow-up task'
+                ]
+            },
+            'customer-erp': {
+                title: 'Customer (ERP)',
+                capabilities: [
+                    'Customer master data',
+                    'Billing information',
+                    'Credit management',
+                    'Account receivables',
+                    'Customer hierarchy'
+                ],
+                flows: [
+                    'HubSpot company → Zoho customer',
+                    'Billing updates → HubSpot sync',
+                    'Credit status → Deal approval'
+                ]
+            },
+            'items': {
+                title: 'Items (SKUs)',
+                capabilities: [
+                    'SKU master management',
+                    'Inventory tracking',
+                    'Product categorization',
+                    'Pricing rules',
+                    'Product availability'
+                ],
+                flows: [
+                    'SKU creation → HubSpot products',
+                    'Inventory levels → Sales availability',
+                    'Price changes → Quote updates'
+                ]
+            },
+            'customer-payments': {
+                title: 'Customer Payments',
+                capabilities: [
+                    'Payment processing',
+                    'Payment method management',
+                    'Payment history tracking',
+                    'Refund processing',
+                    'Payment reconciliation'
+                ],
+                flows: [
+                    'Payment received → Invoice status',
+                    'Payment failure → Collection workflow',
+                    'Payment history → Customer health'
+                ]
+            },
+            'credit-memos': {
+                title: 'Credit Memos',
+                capabilities: [
+                    'Credit issuance',
+                    'Refund management',
+                    'Adjustment tracking',
+                    'Credit application',
+                    'Dispute resolution'
+                ],
+                flows: [
+                    'Credit issued → Account balance update',
+                    'Credit memo → Customer notification',
+                    'Adjustment → Invoice reconciliation'
+                ]
+            },
+            'knowledge': {
+                title: 'Knowledge Base',
+                capabilities: [
+                    'Article creation and management',
+                    'Self-service portal',
+                    'FAQ management',
+                    'Documentation versioning',
+                    'Search functionality'
+                ],
+                flows: [
+                    'Article creation → Publishing',
+                    'Customer search → Article views',
+                    'Feedback → Article updates'
+                ]
+            },
+            'cases': {
+                title: 'Support Cases',
+                capabilities: [
+                    'Ticket creation and routing',
+                    'SLA management',
+                    'Priority assignment',
+                    'Case escalation',
+                    'Resolution tracking'
+                ],
+                flows: [
+                    'Customer issue → Case creation',
+                    'Case assignment → Team notification',
+                    'Case resolution → Customer survey'
+                ]
+            },
+            'communication': {
+                title: 'Communication Management',
+                capabilities: [
+                    'Multi-channel support',
+                    'Email integration',
+                    'Chat support',
+                    'Communication history',
+                    'Response templates'
+                ],
+                flows: [
+                    'Customer email → Case creation',
+                    'Chat session → Ticket logging',
+                    'Communication → Timeline update'
+                ]
+            },
+            'projects': {
+                title: 'Project Management',
+                capabilities: [
+                    'Project creation and tracking',
+                    'Resource allocation',
+                    'Milestone management',
+                    'Budget tracking',
+                    'Gantt chart visualization'
+                ],
+                flows: [
+                    'Deal closed → Project creation',
+                    'Milestone completion → Invoice trigger',
+                    'Project status → Customer update'
+                ]
+            },
+            'billing-output': {
+                title: 'Billing Output',
+                capabilities: [
+                    'Time and materials billing',
+                    'Fixed fee billing',
+                    'Billing report generation',
+                    'Approval workflows',
+                    'Integration with invoicing'
+                ],
+                flows: [
+                    'Timesheet approval → Billing calculation',
+                    'Billing data → Invoice generation',
+                    'Billing report → Finance team'
+                ]
+            },
+            'tasks-milestones': {
+                title: 'Tasks and Milestones',
+                capabilities: [
+                    'Task assignment and tracking',
+                    'Milestone definition',
+                    'Dependency management',
+                    'Progress tracking',
+                    'Deadline monitoring'
+                ],
+                flows: [
+                    'Task completion → Milestone update',
+                    'Milestone reached → Billing trigger',
+                    'Delays → Stakeholder alerts'
+                ]
+            },
+            'timesheets': {
+                title: 'Timesheet Management',
+                capabilities: [
+                    'Time entry and tracking',
+                    'Approval workflows',
+                    'Billable vs non-billable',
+                    'Overtime tracking',
+                    'Timesheet reporting'
+                ],
+                flows: [
+                    'Time entry → Project costs',
+                    'Approved hours → Billing calculation',
+                    'Timesheet data → Resource planning'
+                ]
+            },
+            'consumption-data': {
+                title: 'Consumption Data',
+                capabilities: [
+                    'Usage tracking',
+                    'Metering data collection',
+                    'Consumption analytics',
+                    'Threshold monitoring',
+                    'Usage-based billing inputs'
+                ],
+                flows: [
+                    'Usage data → Billing calculation',
+                    'Threshold exceeded → Upsell trigger',
+                    'Consumption trends → Customer health'
+                ]
+            },
+            'billing-logic': {
+                title: 'Billing Logic Engine',
+                capabilities: [
+                    'Complex pricing models',
+                    'Tiered pricing calculation',
+                    'Usage-based billing',
+                    'Proration handling',
+                    'Discount application'
+                ],
+                flows: [
+                    'Consumption data → Price calculation',
+                    'Billing rules → Invoice amount',
+                    'Pricing output → Zoho Books'
+                ]
+            },
+            'revenue-recognition': {
+                title: 'Revenue Recognition',
+                capabilities: [
+                    'Revenue scheduling',
+                    'Deferred revenue management',
+                    'Recognition rules',
+                    'Compliance reporting',
+                    'Revenue forecasting'
+                ],
+                flows: [
+                    'Invoice → Revenue schedule',
+                    'Period close → Revenue booking',
+                    'Recognition → Financial reports'
+                ]
+            },
+            'accounts-payable': {
+                title: 'Accounts Payable',
+                capabilities: [
+                    'Vendor management',
+                    'Invoice processing',
+                    'Payment scheduling',
+                    'Approval workflows',
+                    'Expense tracking'
+                ],
+                flows: [
+                    'Vendor invoice → Approval workflow',
+                    'Approved invoice → Payment processing',
+                    'Payment → Ledger update'
+                ]
+            },
+            'general-ledger': {
+                title: 'General Ledger',
+                capabilities: [
+                    'Journal entry management',
+                    'Account reconciliation',
+                    'Financial reporting',
+                    'Trial balance',
+                    'Period closing'
+                ],
+                flows: [
+                    'Transactions → Journal entries',
+                    'Period close → Financial statements',
+                    'GL data → Analytics'
+                ]
+            },
+            'payroll': {
+                title: 'Payroll Management',
+                capabilities: [
+                    'US and International payroll',
+                    'Tax calculations',
+                    'Benefits administration',
+                    'Compliance management',
+                    'Payroll reporting'
+                ],
+                flows: [
+                    'Time data → Payroll calculation',
+                    'Payroll → GL entries',
+                    'Payroll data → Analytics'
+                ]
+            },
+            'recruiting': {
+                title: 'Recruiting',
+                capabilities: [
+                    'Applicant tracking',
+                    'Interview scheduling',
+                    'Candidate pipeline',
+                    'Offer management',
+                    'Onboarding workflows'
+                ],
+                flows: [
+                    'Application → Candidate record',
+                    'Hire → Employee creation',
+                    'Onboarding → System access'
+                ]
+            },
+            '3x3': {
+                title: '3x3 Performance Management',
+                capabilities: [
+                    'Performance reviews',
+                    'Goal setting and tracking',
+                    'Feedback collection',
+                    'Rating management',
+                    'Development planning'
+                ],
+                flows: [
+                    'Review cycle → Manager tasks',
+                    'Ratings → Compensation planning',
+                    'Goals → Performance tracking'
+                ]
+            },
+            'lms': {
+                title: 'Learning Management System',
+                capabilities: [
+                    'Course management',
+                    'Training assignments',
+                    'Progress tracking',
+                    'Certification management',
+                    'Compliance training'
+                ],
+                flows: [
+                    'New hire → Training assignment',
+                    'Course completion → Certification',
+                    'Training data → Compliance reports'
+                ]
+            },
+            '4dx-dashboard': {
+                title: '4DX Dashboard',
+                capabilities: [
+                    'WIG (Wildly Important Goals) tracking',
+                    'Lead measure monitoring',
+                    'Lag measure reporting',
+                    'Scoreboard visualization',
+                    'Team accountability metrics'
+                ],
+                flows: [
+                    'CRM data → Lead measures',
+                    'Performance data → Scoreboards',
+                    'Results → Executive reporting'
+                ]
+            },
+            'obr-kpis': {
+                title: 'OBR KPIs',
+                capabilities: [
+                    'Operational business review metrics',
+                    'Key performance indicators',
+                    'Trend analysis',
+                    'Benchmarking',
+                    'Alert thresholds'
+                ],
+                flows: [
+                    'System data → KPI calculation',
+                    'KPI trends → Management alerts',
+                    'Metrics → Board reporting'
+                ]
+            },
+            'monthly-reporting': {
+                title: 'Monthly Reporting Pack',
+                capabilities: [
+                    'Automated report generation',
+                    'Financial summaries',
+                    'Sales performance reports',
+                    'Customer metrics',
+                    'Executive dashboards'
+                ],
+                flows: [
+                    'All systems → Data aggregation',
+                    'Report generation → Distribution',
+                    'Insights → Strategic planning'
+                ]
+            }
+        };
+        
+        function showModal(component) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            const data = componentData[component];
+            
+            if (data) {
+                let html = `<h2>${data.title}</h2>`;
+                
+                if (data.capabilities && data.capabilities.length > 0) {
+                    html += '<h3>Key Capabilities:</h3><ul>';
+                    data.capabilities.forEach(cap => {
+                        html += `<li>${cap}</li>`;
+                    });
+                    html += '</ul>';
+                }
+                
+                if (data.flows && data.flows.length > 0) {
+                    html += '<h3>Process Flows:</h3><ul>';
+                    data.flows.forEach(flow => {
+                        html += `<li>${flow}</li>`;
+                    });
+                    html += '</ul>';
+                }
+                
+                modalBody.innerHTML = html;
+                modal.style.display = 'block';
+            }
+        }
+        
+        function showContainerRelations(container) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            const data = containerRelationships[container];
+            
+            if (data) {
+                let html = `<h2>${data.title}</h2>`;
+                html += `<p style="font-style: italic; color: #666; margin-bottom: 20px;">${data.description}</p>`;
+                
+                if (data.relationships && data.relationships.length > 0) {
+                    html += '<h3>System Relationships & Data Flows:</h3>';
+                    
+                    data.relationships.forEach(rel => {
+                        html += `
+                            <div style="background: #f9f9f9; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid #2196F3;">
+                                <h4 style="color: #2196F3; margin-top: 0;">→ ${rel.target}</h4>
+                                <p><strong>Flow Type:</strong> <span style="background: ${rel.dataFlow === 'Bidirectional' ? '#4CAF50' : '#FF9800'}; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;">${rel.dataFlow}</span></p>
+                                <p><strong>Data Elements:</strong></p>
+                                <ul style="margin: 10px 0;">`;
+                        
+                        rel.elements.forEach(element => {
+                            html += `<li>${element}</li>`;
+                        });
+                        
+                        html += `</ul>
+                                <p style="margin-top: 10px; color: #666;"><em>${rel.description}</em></p>
+                            </div>`;
+                    });
+                }
+                
+                modalBody.innerHTML = html;
+                modal.style.display = 'block';
+            }
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        
+        function switchTab(tab) {
+            // Update active tab
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tab + '-tab').classList.add('active');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Add keyboard support
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
             'digital-content': {
                 title: 'Digital Content (Website)',
                 capabilities: [
