@@ -18,7 +18,7 @@
         }
         
         .container {
-            max-width: 1600px;
+            max-width: 1650px;
             margin: 0 auto;
             background: white;
             border-radius: 10px;
@@ -75,6 +75,7 @@
             overflow: auto;
             padding: 20px;
             padding-bottom: 40px;
+            min-width: 1450px;
         }
         
         .mas-bg { background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%); border-color: #b3d4fc; }
@@ -88,6 +89,7 @@
         .cxt-bg { background: linear-gradient(135deg, #f6f7fb 0%, #eff0f7 100%); border-color: #b3b9d4; }
         .accounting-bg { background: linear-gradient(135deg, #fffdf8 0%, #fff8ee 100%); border-color: #ffc866; }
         .hcm-bg { background: linear-gradient(135deg, #fbfaf9 0%, #f5f2f0 100%); border-color: #c5b8b1; }
+        .ats-bg { background: linear-gradient(135deg, #f5f9ff 0%, #e8f1ff 100%); border-color: #a8c5f0; }
         .analytics-bg { background: linear-gradient(135deg, #f4fbfc 0%, #e6f5f7 100%); border-color: #9dd8e0; }
         
         .system-group {
@@ -400,18 +402,18 @@
                 </div>
                 
                 <!-- Success/AM Group -->
-                <div class="system-group success-bg" style="left: 560px; top: 20px; width: 500px; height: 190px;" onclick="showContainerRelations('success')">
+                <div class="system-group success-bg" style="left: 560px; top: 20px; width: 520px; height: 190px;" onclick="showContainerRelations('success')">
                     <h3 style="margin-bottom: 10px; color: #7B1FA2;">Success / AM</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('nps')">
-                        NPS
+                    <div class="component-box" style="left: 20px; top: 50px; width: 110px;" onclick="event.stopPropagation(); showModal('nps')">
+                        NPS from<br>Pendo
                     </div>
-                    <div class="component-box" style="left: 130px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('customer-health')">
+                    <div class="component-box" style="left: 150px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('customer-health')">
                         Customer<br>Health
                     </div>
-                    <div class="component-box" style="left: 250px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('risk-plans')">
+                    <div class="component-box" style="left: 270px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('risk-plans')">
                         At-Risk Plans
                     </div>
-                    <div class="component-box" style="left: 370px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('tasks-interactions')">
+                    <div class="component-box" style="left: 390px; top: 50px; width: 100px;" onclick="event.stopPropagation(); showModal('tasks-interactions')">
                         Tasks and<br>interactions
                     </div>
                     <div class="system-label orange-label">Hubspot</div>
@@ -566,21 +568,27 @@
                 </div>
                 
                 <!-- HCM Group -->
-                <div class="system-group hcm-bg" style="left: 1040px; top: 500px; width: 240px; height: 210px;" onclick="showContainerRelations('hcm')">
+                <div class="system-group hcm-bg" style="left: 1040px; top: 500px; width: 160px; height: 210px;" onclick="showContainerRelations('hcm')">
                     <h3 style="margin-bottom: 10px; color: #5D4037;">HCM</h3>
-                    <div class="component-box" style="left: 20px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('payroll')">
+                    <div class="component-box" style="left: 35px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('payroll')">
                         Payroll<br>(US / Intl)
                     </div>
-                    <div class="component-box" style="left: 130px; top: 50px; width: 90px;" onclick="event.stopPropagation(); showModal('recruiting')">
-                        Recruiting
-                    </div>
-                    <div class="component-box" style="left: 20px; top: 120px; width: 90px;" onclick="event.stopPropagation(); showModal('3x3')">
+                    <div class="component-box" style="left: 20px; top: 120px; width: 60px;" onclick="event.stopPropagation(); showModal('3x3')">
                         3x3
                     </div>
-                    <div class="component-box" style="left: 130px; top: 120px; width: 90px;" onclick="event.stopPropagation(); showModal('lms')">
+                    <div class="component-box" style="left: 90px; top: 120px; width: 60px;" onclick="event.stopPropagation(); showModal('lms')">
                         LMS
                     </div>
                     <div class="system-label" style="background: #8D6E63; color: white;">Various HR Systems</div>
+                </div>
+                
+                <!-- ATS Group -->
+                <div class="system-group ats-bg" style="left: 1220px; top: 500px; width: 160px; height: 210px;" onclick="showContainerRelations('ats')">
+                    <h3 style="margin-bottom: 10px; color: #1976D2;">ATS</h3>
+                    <div class="component-box" style="left: 35px; top: 80px; width: 90px;" onclick="event.stopPropagation(); showModal('recruiting')">
+                        Recruiting
+                    </div>
+                    <div class="system-label" style="background: #2196F3; color: white;">Applicant Tracking</div>
                 </div>
                 
                 <!-- Analytics Group -->
@@ -942,6 +950,36 @@
                     }
                 ]
             },
+            'ats': {
+                title: 'ATS (Applicant Tracking System)',
+                description: 'Recruitment and candidate management system',
+                relationships: [
+                    {
+                        target: 'HCM',
+                        dataFlow: 'Unidirectional',
+                        elements: ['New hires', 'Employee records', 'Onboarding data', 'Background check results', 'Offer letters'],
+                        description: 'Successful candidates flow into HR systems for onboarding'
+                    },
+                    {
+                        target: 'CRM',
+                        dataFlow: 'Bidirectional',
+                        elements: ['Candidate pipeline', 'Recruitment metrics', 'Referral tracking', 'Talent pool data'],
+                        description: 'Candidate relationship management and employer branding'
+                    },
+                    {
+                        target: 'Analytics',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Time-to-hire', 'Cost-per-hire', 'Source effectiveness', 'Recruiter performance', 'Diversity metrics'],
+                        description: 'Recruitment analytics and reporting'
+                    },
+                    {
+                        target: 'Accounting',
+                        dataFlow: 'Unidirectional',
+                        elements: ['Recruitment costs', 'Agency fees', 'Job board expenses', 'Recruiter expenses'],
+                        description: 'Recruitment cost tracking and budgeting'
+                    }
+                ]
+            },
             'analytics': {
                 title: 'Analytics Platform',
                 description: 'PowerBI for business intelligence and reporting',
@@ -1019,15 +1057,17 @@
                 ]
             },
             'nps': {
-                title: 'NPS (Net Promoter Score)',
+                title: 'NPS from Pendo',
                 capabilities: [
-                    'NPS survey creation and distribution',
-                    'In-app survey embedding capability',
+                    'NPS survey creation and distribution via Pendo',
+                    'In-app survey embedding with Pendo',
                     'Automated survey scheduling',
-                    'Score tracking on contact records',
-                    'Detractor alert workflows'
+                    'Score tracking on contact records in HubSpot',
+                    'Detractor alert workflows',
+                    'Pendo analytics integration'
                 ],
                 flows: [
+                    'Pendo survey → HubSpot contact update',
                     'Low NPS score → Account manager alert',
                     'Survey responses → Contact property updates',
                     'NPS trends → Customer health score'
@@ -1514,18 +1554,35 @@
                 ]
             },
             'recruiting': {
-                title: 'Recruiting',
+                title: 'Recruiting (ATS)',
                 capabilities: [
-                    'Applicant tracking',
-                    'Interview scheduling',
-                    'Candidate pipeline',
-                    'Offer management',
-                    'Onboarding workflows'
+                    'Job requisition management and approval workflows',
+                    'Multi-channel job posting (job boards, social media, company website)',
+                    'Resume parsing and candidate database',
+                    'Applicant tracking through hiring stages',
+                    'Interview scheduling and coordination',
+                    'Collaborative hiring team feedback',
+                    'Candidate communication and email templates',
+                    'Talent pool and pipeline management',
+                    'Employee referral program tracking',
+                    'Background check and reference management',
+                    'Offer letter generation and e-signatures',
+                    'EEOC and compliance reporting',
+                    'Recruitment analytics and dashboards',
+                    'Integration with LinkedIn and other sourcing platforms',
+                    'Mobile-responsive career pages'
                 ],
                 flows: [
-                    'Application → Candidate record',
-                    'Hire → Employee creation',
-                    'Onboarding → System access'
+                    'Job posting → Multiple job boards',
+                    'Application received → Resume parsing → Candidate profile',
+                    'Candidate screening → Interview scheduling',
+                    'Interview feedback → Hiring decision',
+                    'Offer generation → Acceptance → HCM onboarding',
+                    'Rejected candidates → Talent pool',
+                    'Referrals → Tracking → Rewards',
+                    'Recruitment metrics → Analytics dashboards',
+                    'New hire data → HRIS integration',
+                    'Compliance data → EEOC reporting'
                 ]
             },
             '3x3': {
